@@ -1,25 +1,67 @@
-function rBrisket() {
-      var rtf = document.getElementById("rtf").value;
-      var raw = 0;
-      var yld = 0.3621; // Yield % converted to Decimal
+/*  Brisket Calculator v0.1
+*   Last Updated on : 2017-10-25
 
-      raw += (rtf / yld) / 16; // Yield converted from wz to lbs
+    Author: Patrick Betts
+    Date: 2017-10-25
 
-      raw = Number((raw).toFixed(2)); //Shortening to hundredths decimal place
+    Filename: cbrisk.js
+*/
 
-      document.getElementById("raw").innerHTML = "Order " + raw + "# of Raw Brisket";
+var amountNeeded = parseInt(document.getElementById("amount_needed").value);
+var startingAmount = 0;
+var rawToFinishYield = 0;
+var rawToServeYield = 0;
+var finishToServeYield = 0;
+var product;
+
+
+var calculationType = function () {
+    if (document.getElementsByTagName("input").name === "type") {
+        if (document.getElementsByTagName("input").value === "rtf_to_raw"){
+            rtfToRaw(amountNeeded);
+            return startingAmount;
+        } else if (document.getElementsByTagName("input").value === "rts_to_raw"){
+            rtsToRaw(amountNeeded);
+            return startingAmount;
+        } else if (document.getElementsByTagName("input").value === "rts_to_rtf"){
+            rtsToRtf(amountNeeded);
+            return startingAmount;
+        }
+    }
 }
 
-document.getElementById("rtf").addEventListener("change", rBrisket, false);
+function rtfToRaw(num) {
+    startingAmount = rawToFinishYield / num;
+};
 
-function fBrisket() {
-  var rts = document.getElementById("rts").value;
-  var svd = 0;
-  var yld = 0.6; // Yield % converted to Decimal
+function rtsToRaw(num) {
+    startingAmount = rawToServeYield / num
+};
 
-  svd += (rts / yld);
+function rtsToRtf(num) {
+    startingAmount = finishToServeYield / num
+};
 
-  document.getElementById("frtf").innerHTML = "You need" + svd + "oz of RTF Brisket";
-}
+function pickProduct() {
+    if (product === "brisket") {
+        rawToFinishYield = 36.21 / 100;
+        rawToServeYield = (36.21 / 100) / (60 / 100);
+        finishToServeYield = 60 / 100;
+    } else {
+        alert("Please select a product");
+    }
+};
 
-document.getElementById("rts").addEventListener("change", fBrisket, false);
+function calculate() {
+    pickProduct();
+    calculationType();
+
+    document.getElementById("needed").innerHTML = amountNeeded + " wz";
+    document.getElementById("start_with").innerHTML = startingAmount + " wz";
+
+};
+
+
+
+window.onload =
+

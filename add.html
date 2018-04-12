@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Black Hearth Calculator App - Add Product</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <a href="#">Add Product</a>
+    <br />
+    <a href="#">Calculate Product</a>
+    <form id="add_product">
+        <fieldset>
+        <legend>Add Product to JSON:</legend>
+            <label>Type:&nbsp;</label>
+            <select id="classification">
+                <option value="">Select Product Type</option>
+                <option value="Protein">Protein</option>
+                <option value="Produce">Produce</option>
+                <option value="Dry Goods">Dry Goods</option>
+                <option value="Dairy">Dairy</option>
+            </select>
+            <span>*</span>
+            <br><br>
+            <label>Product:&nbsp;</label>
+            <input type="text" placeholder="Name of Product" id="product">
+            <span>*</span>
+            <br><br>
+            <label>AP Cost:&nbsp;</label>
+            <input type="text" placeholder="$x.xx" id="ap_Price" maxlength="4">
+            <span></span>
+            <br><br>
+            <label>Yield:&nbsp;</label>
+            <input type="text" placeholder="xx.xx%" id="yld" maxlength="6">
+            <span></span>
+            <br><br>
+            <label>EP Price:&nbsp;</label>
+            <input type="text" placeholder="$x.xx" id="ep_Price" maxlength="4">
+            <span></span>
+            <br><br>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+  <script src="./resources/js/test.js"></script>
+</body>
+</html>
